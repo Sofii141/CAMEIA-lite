@@ -1,0 +1,10 @@
+# El código del caso base vive en su propia rama (main) del mismo repositorio
+Repositorio/
+# El repo es PÚBLICO: no se suben PDF de terceros (artículos con derechos de autor ni material del profe)
+00 - Info inicial/*.pdf
+01 - Exposicion/Fuentes/Articulos/
+# Videos pesados: se comparten por Drive
+99 - Videos/*.mp4
+~$*
+.DS_Store
+Thumbs.db

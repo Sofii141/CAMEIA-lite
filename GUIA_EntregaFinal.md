@@ -1,0 +1,125 @@
+# Guía para el 5,0 — Proyecto final + Exposición (Tercer corte)
+
+**Tema 3 · Pair programming:** programar en pareja con una persona vs. con un agente: qué se gana, qué se pierde y qué aprendizaje desaparece cuando el compañero no necesita entender.
+**Práctica que asiste el agente (la fija el PDF):** desarrollo de una tarea con el agente como copiloto. **Qué medir:** tiempo, retrabajo y errores detectados a tiempo.
+
+> Vale el 100 % del corte = 70 % reporte/proyecto + 30 % exposición. Lo único que anula todo el trabajo: **inventar datos de línea base o de bitácora.**
+
+---
+
+## 1. Lo que más pesa en la nota
+
+| Reporte y proyecto (70 %) | Peso | Para el máximo |
+|---|---|---|
+| Medición y evidencia | **35 %** | ≥10 casos con material difícil, línea base real (antes del 30/10), comparación honesta |
+| Gobernanza y bitácora | 25 % | Cada uso con decisión (aceptar/corregir/rechazar), **razón** y responsable |
+| Especificación de agentes | 20 % | Prohibiciones explícitas, criterio de validación, versiones v1→v2 con su porqué |
+| Fallos y riesgos | 20 % | 3 fallos reales + riesgos de *su* caso, no genéricos |
+
+| Exposición (30 %) | Peso | Para el máximo |
+|---|---|---|
+| Dominio del tema | 30 % | Responder lo que no está en las diapositivas — **los dos saben todo** |
+| Demo del proyecto | 25 % | En vivo, sobre su caso real, + video de respaldo de 2 min |
+| Crítica del enfoque | 20 % | Límites y costos reales, con datos propios |
+| Conexión tema–proyecto | 15 % | Una sola historia: el tema explica lo que midieron |
+| Tiempo y claridad | 10 % | 10 + 8 min exactos, sin leer |
+
+**Un resultado negativo bien medido saca mejor nota que uno positivo sin evidencia** (lo dice el PDF). No tienen que demostrar que el agente sirve; tienen que demostrar *qué pasó*.
+
+---
+
+## 2. Lo que este profe premia (sacado de la retro de la E1, donde sacaron 3/3 en medición y gobernanza)
+
+1. **Las marcas `[V] [R] [P] [N] [C]`.** Lo que más le impresionó. Úsenlas en todo el reporte, también para las fuentes.
+2. **Decir qué NO demuestra cada número** ("qué no representa esta métrica", "no podemos afirmar causalidad").
+3. **Descartar métricas con datos** y explicar por qué.
+4. **Que una segunda persona recalcule** al menos una cifra de forma independiente (fue lo que les faltó en la E1).
+5. **Ir a la fuente primaria, no releer el texto de la IA** (el caso CM-25).
+6. **Confirmar por escrito** cualquier adaptación con el profe y guardar esa confirmación en `09 - Control de entrega`.
+7. **Lo que les quitó puntos en la E1 (C5):** se repartieron la sustentación por roles y se equivocaron citando cifras. Aquí: **cada uno debe poder explicar todo**, y llevar escritas las 5–6 cifras clave.
+8. Tiene línea de investigación en **deuda de proceso / deuda técnica en ágil**. El ángulo "el agente genera *deuda de conocimiento* invisible en la velocidad" le va a sonar.
+
+---
+
+## 3. Diseño recomendado del proyecto
+
+**La idea:** comparar la misma práctica en dos condiciones, sobre tareas reales del mismo proyecto:
+
+| | Línea base (antes del 30/10) | Ciclos 1 y 2 (2–13 nov) |
+|---|---|---|
+| Condición | **Pareja humana** (driver/navigator, sin IA) | **Pareja con agente** (una persona + agente copiloto) |
+| Casos | ≥10 tareas | ≥5 tareas por ciclo (≥10 en total) |
+
+**Caso base:** tareas de desarrollo **reales** de CAMEIA (backlog/Jira/repos; ya lo usaron en E1/E2 y tienen datos históricos). Si usan el proyecto de Juan José, igual: lo importante es que sea real. Tareas pequeñas (30–90 min) para que quepan en el tiempo.
+- Incluyan **difíciles a propósito** (≥4 de 12): código que ninguno escribió, requisito ambiguo, API/librería que no conocen, bug difícil de reproducir, una tarea con un riesgo de seguridad escondido, una parte con factor de camión 0.
+- **Clasifiquen por tamaño (S/M/L) y asignen condición por sorteo dentro de cada tamaño** (así se hizo en el estudio de METR; Hannay et al. 2009 muestran que el efecto del pairing depende de la complejidad).
+- Congelen el caso (fecha en cada ficha) **antes** de medir. Lo que falte después va como limitación.
+- Revisen datos sensibles antes de dárselos al agente (y si el repo es del Proyecto II, que el equipo esté de acuerdo).
+
+**GQM (una sola práctica, varias preguntas):**
+Objetivo: *evaluar si desarrollar con un agente copiloto, frente a la pareja humana, reduce tiempo sin aumentar retrabajo ni errores y sin perder la comprensión del código.*
+
+| Pregunta | Métrica | Cómo se toma |
+|---|---|---|
+| P1 ¿Se tarda menos? | Minutos efectivos por tarea (por tamaño) | Cronómetro, no estimado ni "sentido" |
+| P2 ¿Hay más retrabajo? | Commits/cambios hechos después de declarar "terminado" | Historial git de la rama |
+| P3 ¿Se detectan errores a tiempo? | Defectos detectados antes del merge vs. escapados | Pruebas + revisión del compañero |
+| P4 ¿Qué aprendizaje desaparece? *(el tema)* | Comprensión 0–5 del autor y del compañero | *Codewalk* de 5 min / 5 preguntas sin mirar el código ni al agente (su instrumento de la E2) |
+
+P4 es lo que conecta todo: la literatura dice que con IA **se siente** más rápido (METR 2025: 19 % más lentos creyéndose 20 % más rápidos), se revisa con **menos escrutinio** (Welter et al. 2025) y **se entiende menos** (Anthropic 2026: ~17 puntos menos en comprensión). Ustedes lo comprueban o lo refutan con su propio caso.
+
+**Agentes:** empiecen con **uno solo** (Copiloto/navegante). Agreguen un "Revisor" en el ciclo 2 **solo si** la bitácora del ciclo 1 muestra un problema que el primero no resolvía, y expliquen qué pasa cuando discrepan. Plantilla de spec ya creada en `04 - Especificacion agentes`.
+
+---
+
+## 4. Checklist por fechas
+
+### ⚠️ Antes de nada (hoy–mañana)
+- [ ] Confirmar que el tema 3 quedó registrado en el archivo compartido (cerró el 24/10) y guardar captura en `09`.
+- [ ] Ojo con la semana: **Entrega 2 el 27/10 y Parcial 2 el 28/10** del curso, y el punto de control es el **30/10**. Repártanse bien.
+
+### 🔴 Próxima entrega: Punto de control — jueves 30 de octubre (sin nota, pero con consecuencia)
+- [ ] **Caso base**: ≥10 fichas (mejor 12) con difíciles marcadas, congeladas. → `02 - Caso base/Casos propios`
+- [ ] **Línea base medida**: ≥10 tareas en pareja humana con la hoja *Medicion por caso* llena + condiciones (quién, cuánto duró, herramientas). → `03 - Linea base`
+- [ ] **GQM** escrito. → `03 - Linea base`
+- [ ] **Especificación v1** del agente. → `04`
+- [ ] **3 casos para entregar** a otra pareja (difíciles de verdad). → `02/Casos entregados`
+- [ ] Ese día recibir los 3 de la otra pareja → `02/Casos recibidos` (obligatorio incorporarlos; repórtenlos aparte como "casos no previstos").
+- [ ] Preguntarle al profe lo que tengan dudoso y **guardar la respuesta por escrito**.
+
+### Ciclo 1 — 2 al 6 nov
+- [ ] ≥5 tareas con el agente, **una fila de bitácora por cada uso** (la columna Razón es la que lee).
+- [ ] Al cerrar: revisar la spec → **v2** con el porqué en el historial. Guardar `DDMMAAAA_NN_Bitacora_vX.xlsx`.
+
+### Ciclo 2 — 9 al 13 nov
+- [ ] ≥5 tareas más (incluir los 3 recibidos). Bitácora igual.
+- [ ] Documentar **3 fallos reales**: qué hizo el agente, cómo lo detectaron, qué habría pasado sin revisión, qué cambiaron (prompt/spec/punto de control). → `06`
+- [ ] Grabar el **video de la demo (2 min)**. → `99`
+
+### Entrega — lunes 16 nov (reporte PDF 6–10 pág. + anexos + diapositivas)
+1. Portada · 2. Tema, práctica y qué esperaban · 3. Caso base (½ pág.) + 3 recibidos · 4. Línea base (GQM, datos, n, condiciones) · 5. Spec con versiones · 6. Resumen de ciclos y decisiones más frecuentes · 7. Antes/después con interpretación (si no mejoró, decirlo) · 8. 3 fallos + riesgos (confidencialidad, sesgo/omisiones, sobredependencia — *de su caso*) + conclusión honesta · 9. Declaración de uso de IA.
+**Anexos:** bitácora completa (xlsx) + specs/prompts finales.
+- [ ] Una segunda persona recalcula una cifra clave (anotarlo).
+
+### Exposición — 17 o 18 nov (llegar listos el 17; orden al azar)
+- **10 min tema:** problema y contexto (2–3 min) → cómo funciona (driver/navigator vs. agente, para que alguien lo pruebe) → **crítica explícita**: qué no resuelve, cuándo no conviene, qué cuesta.
+- **8 min proyecto:** línea base → qué hizo el agente → qué cambió → demo en vivo sobre una tarea de su caso.
+- **Cierre:** una frase "qué nos dijo el tema sobre nuestro proyecto" + **2 preguntas para el curso** + diapositiva final de **declaración de uso de IA**.
+- Probar el proyector y la red **antes** de la sesión; tener el video listo; no leer diapositivas.
+
+---
+
+## 5. Errores que bajan la nota
+- Empezar por el prompt en vez de por la medición.
+- Línea base "reconstruida de memoria" después del 30/10.
+- Medir tres prácticas a la vez.
+- "Nos sentimos más rápidos" como evidencia.
+- Un agente que "nunca falló" (= no lo revisaron).
+- Afirmar causalidad con n = 10.
+- Darle al agente lo que no le darían a un tercero (secretos, datos personales).
+
+## 6. Archivos ya creados
+- `05 - Ciclos y bitacora/25102026_01_Bitacora_v1.xlsx` — bitácora + medición por caso.
+- `04 - Especificacion agentes/25102026_01_Spec_Copiloto_v1.md` — spec con los 8 campos del PDF.
+- `02 - Caso base/Plantilla_Ficha_Caso.md` — ficha de cada caso.
+- `01 - Exposicion/Fuentes/25102026_01_Fuentes_v1.md` — artículos (todos en `[P]` hasta que los lean).
