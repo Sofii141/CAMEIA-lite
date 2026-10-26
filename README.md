@@ -33,3 +33,15 @@ Estas solo se asignan a la condición *con agente* y las hace la **otra persona*
 python sorteo.py 30102026
 ```
 El número es la semilla. Anoten en un acta cuál usaron, así cualquiera puede repetir el sorteo y obtener lo mismo.
+
+## Demo (frontend + backend), para la presentación
+```bash
+python demo/servidor.py        # luego abrir http://localhost:8000
+```
+- `demo/index.html` **no valida nada**: envía los datos y muestra lo que responde el backend.
+- `demo/servidor.py` (solo librería estándar) valida usando las funciones de las tareas: t01, t03–t07, t16 y t17 para los formularios; t09 (nivel de log), t18 (X-Request-Id) y t24 (correo enmascarado) para el log.
+- Si una tarea todavía no está hecha, su campo muestra "tarea tNN pendiente". Así, a medida que avanzan, la demo se va "encendiendo" sola.
+- La demo **no se mide**: lo que se mide son las tareas. No hay que tocarla durante una sesión cronometrada.
+
+## De dónde salen las tareas
+Cada tarea viene de un ítem real de Jira y de un PR de CAMEIA. La trazabilidad completa está en la rama `documentacion`, archivo `02 - Caso base/26102026_01_Backlog_Origen_CAMEIA-lite_v1.md`.

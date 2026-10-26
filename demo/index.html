@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CAMEIA-lite demo</title>
+<style>
+  :root { --bg:#f6f7f9; --card:#fff; --text:#1d2433; --muted:#5b6475; --line:#d9dde5; --err:#b42318; --ok:#067647; --acc:#1f4e78; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#12151b; --card:#1b2029; --text:#e6e9ef; --muted:#9aa3b5; --line:#2e3542; --err:#f97066; --ok:#47cd89; --acc:#7cb4e8; } }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:15px/1.5 system-ui, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 24px 16px; }
+  h1 { font-size: 22px; margin: 0 0 4px; } p.nota { color: var(--muted); margin: 0 0 20px; }
+  form { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 18px; margin-bottom: 20px; }
+  h2 { font-size: 17px; margin: 0 0 12px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; }
+  label { display: block; font-weight: 600; font-size: 13px; }
+  input { width: 100%; margin-top: 4px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 6px; background: transparent; color: var(--text); font: inherit; }
+  .err { color: var(--err); font-size: 13px; min-height: 1em; margin-top: 3px; }
+  button { margin-top: 14px; padding: 9px 16px; border: 0; border-radius: 6px; background: var(--acc); color: #fff; font-weight: 600; cursor: pointer; }
+  .estado { margin-top: 10px; font-size: 13px; color: var(--muted); } .estado.ok { color: var(--ok); }
+</style>
+</head>
+<body>
+<main>
+  <h1>CAMEIA-lite · demo</h1>
+  <p class="nota">Esta página <strong>no valida nada</strong>: envía lo que escribas y muestra lo que responde el backend (las funciones de las tareas). Un campo que dice "tarea tNN pendiente" significa que esa tarea todavía no se implementó.</p>
+
+  <form id="registro" novalidate data-url="/api/registro">
+    <h2>Registro</h2>
+    <div class="grid">
+      <label>Nombre<input name="nombre"><div class="err" data-campo="nombre"></div></label>
+      <label>Apellido<input name="apellido"><div class="err" data-campo="apellido"></div></label>
+      <label>Correo<input name="correo"><div class="err" data-campo="correo"></div></label>
+      <label>Celular<input name="celular" placeholder="+573001234567"><div class="err" data-campo="celular"></div></label>
+      <label>Contraseña<input name="contrasena" type="password"><div class="err" data-campo="contrasena"></div></label>
+      <label>Fecha de nacimiento<input name="nacimiento" placeholder="AAAA-MM-DD"><div class="err" data-campo="nacimiento"></div></label>
+    </div>
+    <button>Registrarme</button><div class="estado"></div>
+  </form>
+
+  <form id="perfil" novalidate data-url="/api/perfil">
+    <h2>Perfil profesional</h2>
+    <div class="grid">
+      <label>Expectativa salarial<input name="salario"><div class="err" data-campo="salario"></div></label>
+      <label>Formación: inicio<input name="inicio" placeholder="AAAA-MM"></label>
+      <label>Formación: fin (vacío = en curso)<input name="fin" placeholder="AAAA-MM"><div class="err" data-campo="formacion"></div></label>
+    </div>
+    <button>Guardar perfil</button><div class="estado"></div>
+  </form>
+</main>
+<script>
+  document.querySelectorAll("form").forEach(form => {
+    form.addEventListener("submit", async ev => {
+      ev.preventDefault();
+      form.querySelectorAll(".err").forEach(e => e.textContent = "");
+      const estado = form.querySelector(".estado");
+      estado.className = "estado"; estado.textContent = "Enviando…";
+      const datos = Object.fromEntries(new FormData(form));
+      try {
+        const r = await fetch(form.dataset.url, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(datos) });
+        const cuerpo = await r.json();
+        const rid = r.headers.get("X-Request-Id");
+        if (r.ok) { estado.className = "estado ok"; estado.textContent = `Guardado (${r.status}) · X-Request-Id ${rid}`; return; }
+        for (const [campo, msgs] of Object.entries(cuerpo.errors || {})) {
+          const el = form.querySelector(`[data-campo="${campo}"]`);
+          if (el) el.textContent = msgs.join(" ");
+        }
+        estado.textContent = `El backend rechazó la solicitud (${r.status} ${cuerpo.code}) · X-Request-Id ${rid}`;
+      } catch (e) {
+        estado.textContent = "No se pudo contactar al backend. ¿Está corriendo python demo/servidor.py?";
+      }
+    });
+  });
+</script>
+</body>
+</html>
