@@ -19,6 +19,7 @@ Ana Sofía Arango Yanza · Juan José Arias Chacua · Prof. César Pardo
 | `08 - Reporte` | Reporte PDF (6–10 pág.) y sus versiones |
 | `09 - Control de entrega` | Checklist, actas de la pareja, confirmaciones del profe por escrito |
 | `99 - Videos` | Video de respaldo de la demo (2 min) |
+| `_Estilo` | Paleta "Macarons", fuentes, `estilo.css`, plantilla HTML y `html_a_pdf.py`: **todo documento y las diapositivas siguen este estilo** |
 
 ## Ramas del repositorio (https://github.com/Sofii141/CAMEIA-lite)
 - `main`: código del caso base (carpeta local `Repositorio/CAMEIA-lite`).

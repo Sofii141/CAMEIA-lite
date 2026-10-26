@@ -1,4 +1,4 @@
-# Plan para el punto de control — jueves 30 de octubre
+# Plan para el punto de control — viernes 30 de octubre
 
 **Lo que hay que mostrar:**
 1. Caso base de ≥10 casos con material difícil.
@@ -35,7 +35,7 @@ Nada del proyecto, salvo pedirle al profe (por correo o en clase) que confirme *
 - [ ] Llenar la hoja *Medicion por caso* **al terminar cada tarea**, no al final del día.
 - [ ] Al cerrar: copiar la bitácora con fecha nueva (`29102026_01_Bitacora_v2.xlsx`) y anotarlo en el CHANGELOG.
 
-### Jueves 30 — antes de clase (1 h)
+### Viernes 30 — antes de clase (1 h)
 - [ ] Que **la otra persona recalcule** el promedio de duración y de errores escapados. Fue lo que les faltó en la E1.
 - [ ] Preparar una página de resumen de la línea base: n, promedios por tamaño, condiciones y qué NO demuestra.
 - [ ] **3 casos para la otra pareja:** dependen del tema de esa pareja, así que se arman cuando sepan cuál les toca. Que sean difíciles de verdad.

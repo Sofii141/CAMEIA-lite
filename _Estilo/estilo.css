@@ -1,0 +1,123 @@
+/* ==========================================================================
+   Estilo "Macarons" — documentos del proyecto final Ágiles 2026-2
+   Usar en todo documento (PDF vía HTML) y como referencia para las diapositivas.
+   Ver _Estilo/README.md
+   ========================================================================== */
+/* Fuentes locales (OFL, Google Fonts) en _Estilo/fuentes: funcionan sin internet */
+@font-face { font-family: "Fraunces"; font-weight: 400; font-style: normal; src: url("fuentes/Fraunces-400.ttf") format("truetype"); }
+@font-face { font-family: "Fraunces"; font-weight: 600; font-style: normal; src: url("fuentes/Fraunces-600.ttf") format("truetype"); }
+@font-face { font-family: "Fraunces"; font-weight: 800; font-style: normal; src: url("fuentes/Fraunces-800.ttf") format("truetype"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 400; font-style: normal; src: url("fuentes/JetBrainsMono-400.ttf") format("truetype"); }
+@font-face { font-family: "JetBrains Mono"; font-weight: 600; font-style: normal; src: url("fuentes/JetBrainsMono-600.ttf") format("truetype"); }
+@font-face { font-family: "Nunito Sans"; font-weight: 400; font-style: normal; src: url("fuentes/NunitoSans-400.ttf") format("truetype"); }
+@font-face { font-family: "Nunito Sans"; font-weight: 600; font-style: normal; src: url("fuentes/NunitoSans-600.ttf") format("truetype"); }
+@font-face { font-family: "Nunito Sans"; font-weight: 800; font-style: normal; src: url("fuentes/NunitoSans-800.ttf") format("truetype"); }
+
+:root {
+  /* Paleta */
+  --matcha:      #BCC86F;  /* éxito, listo, verificado */
+  --semolina:    #F5CB99;  /* fondos suaves, tablas */
+  --strawberry:  #FFABA9;  /* advertencias suaves, casos difíciles */
+  --tea-rose:    #F68578;  /* acento principal, pendientes */
+  --peanut:      #B9794A;  /* texto secundario, bordes */
+  --chocolate:   #79371D;  /* texto principal, títulos */
+  /* Derivados */
+  --cream:       #FFF8EF;  /* fondo de página */
+  --matcha-soft: #EEF1D6;
+  --semolina-soft:#FCEEDC;
+  --rose-soft:   #FFE6E4;
+  --ink:         #4A2312;  /* texto de cuerpo, más oscuro que chocolate */
+  --line:        #E9CFAE;
+
+  --f-titulo: "Fraunces", Georgia, serif;
+  --f-texto:  "Nunito Sans", "Segoe UI", sans-serif;
+  --f-mono:   "JetBrains Mono", Consolas, monospace;
+}
+
+@page { size: A4; margin: 18mm 16mm 20mm; }
+@page :first { margin: 0; }
+
+* { box-sizing: border-box; }
+html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+body { margin: 0; background: #fff; color: var(--ink); font: 10.5pt/1.55 var(--f-texto); }
+
+/* ---------- Portada ---------- */
+.portada { height: 297mm; padding: 26mm 22mm; position: relative; overflow: hidden; page-break-after: always;
+  background: var(--chocolate); color: var(--cream); display: flex; flex-direction: column; }
+.portada .franjas { position: absolute; right: 0; top: 0; bottom: 0; width: 44mm; display: flex; flex-direction: column; }
+.portada .franjas span { flex: 1; }
+.portada .etiqueta { font: 800 9pt var(--f-texto); letter-spacing: .18em; text-transform: uppercase; color: var(--semolina); }
+.portada h1 { font: 800 40pt/1.02 var(--f-titulo); margin: 14mm 0 6mm; max-width: 120mm; color: var(--cream); }
+.portada .sub { font: 400 15pt/1.35 var(--f-titulo); color: var(--strawberry); max-width: 115mm; }
+.portada .meta { margin-top: auto; max-width: 118mm; font-size: 10.5pt; }
+.portada .meta dt { font: 800 8pt var(--f-texto); letter-spacing: .14em; text-transform: uppercase; color: var(--matcha); margin-top: 5mm; }
+.portada .meta dd { margin: 1mm 0 0; }
+.portada .meta a { color: var(--semolina); }
+
+/* ---------- Títulos ---------- */
+h1, h2, h3 { font-family: var(--f-titulo); color: var(--chocolate); line-height: 1.15; }
+h2 { font-size: 20pt; font-weight: 800; margin: 0 0 4mm; padding-top: 2mm; break-after: avoid; }
+h2 .num { display: inline-block; min-width: 11mm; height: 11mm; line-height: 11mm; text-align: center; border-radius: 50%;
+  background: var(--tea-rose); color: var(--cream); font-size: 13pt; margin-right: 3mm; vertical-align: 2pt; }
+h3 { font-size: 13pt; font-weight: 600; margin: 6mm 0 2mm; break-after: avoid; }
+section { margin-bottom: 9mm; }
+section.nueva { break-before: page; }
+p { margin: 0 0 3mm; }
+a { color: var(--chocolate); text-decoration-color: var(--tea-rose); }
+code { font: 8.8pt var(--f-mono); background: var(--semolina-soft); padding: .3mm 1.2mm; border-radius: 1mm; color: var(--chocolate); }
+strong { color: var(--chocolate); }
+.lead { font: 400 12pt/1.5 var(--f-titulo); color: var(--chocolate); }
+
+/* ---------- Tablas ---------- */
+table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 2mm 0 5mm; font-size: 9pt; break-inside: auto; }
+thead th { background: var(--chocolate); color: var(--cream); font-weight: 800; text-align: left; padding: 2.2mm 2.5mm; font-size: 8.5pt; }
+thead th:first-child { border-top-left-radius: 2mm; } thead th:last-child { border-top-right-radius: 2mm; }
+tbody td { padding: 2mm 2.5mm; border-bottom: .3mm solid var(--line); vertical-align: top; background: #fff; }
+tbody tr:nth-child(even) td { background: var(--semolina-soft); }
+tr { break-inside: avoid; }
+td.c { text-align: center; }
+
+/* ---------- Chips y estados ---------- */
+.chip { display: inline-block; padding: .4mm 2.4mm; border-radius: 10mm; font-size: 8pt; font-weight: 800; white-space: nowrap; }
+.chip.ok    { background: var(--matcha); color: var(--chocolate); }
+.chip.pend  { background: var(--tea-rose); color: #fff; }
+.chip.dif   { background: var(--strawberry); color: var(--chocolate); }
+.chip.info  { background: var(--semolina); color: var(--chocolate); }
+.chip.s { background: var(--matcha-soft); color: var(--chocolate); }
+.chip.m { background: var(--semolina); color: var(--chocolate); }
+.chip.l { background: var(--peanut); color: #fff; }
+
+/* ---------- Cajas ---------- */
+.caja { border-radius: 3mm; padding: 4mm 5mm; margin: 3mm 0 5mm; break-inside: avoid; border-left: 2mm solid; }
+.caja h4 { margin: 0 0 1.5mm; font: 800 9pt var(--f-texto); letter-spacing: .1em; text-transform: uppercase; }
+.caja p:last-child, .caja ul:last-child { margin-bottom: 0; }
+.caja.nota  { background: var(--semolina-soft); border-color: var(--peanut); }   .caja.nota h4 { color: var(--peanut); }
+.caja.ok    { background: var(--matcha-soft);  border-color: var(--matcha); }    .caja.ok h4 { color: #6B7530; }
+.caja.alerta{ background: var(--rose-soft);    border-color: var(--tea-rose); }  .caja.alerta h4 { color: #C24A3C; }
+
+/* ---------- Tarjetas de estado ---------- */
+.tarjetas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.5mm; margin: 3mm 0 6mm; }
+.tarjeta { border-radius: 3mm; padding: 4mm; background: #fff; border: .3mm solid var(--line); break-inside: avoid; }
+.tarjeta .t { font: 800 8pt var(--f-texto); letter-spacing: .1em; text-transform: uppercase; color: var(--peanut); }
+.tarjeta .v { font: 800 22pt/1.1 var(--f-titulo); color: var(--chocolate); margin: 1.5mm 0; }
+.tarjeta.verde { border-top: 2.2mm solid var(--matcha); } .tarjeta.rosa { border-top: 2.2mm solid var(--tea-rose); } .tarjeta.miel { border-top: 2.2mm solid var(--semolina); }
+
+/* ---------- Listas de pasos ---------- */
+ol.pasos { counter-reset: p; list-style: none; padding: 0; margin: 2mm 0 5mm; }
+ol.pasos li { counter-increment: p; position: relative; padding: 0 0 2.5mm 10mm; }
+ol.pasos li::before { content: counter(p); position: absolute; left: 0; top: 0; width: 6.5mm; height: 6.5mm; border-radius: 50%;
+  background: var(--matcha); color: var(--chocolate); font: 800 8.5pt/6.5mm var(--f-texto); text-align: center; }
+ul { padding-left: 5mm; margin: 0 0 3mm; } li { margin-bottom: 1mm; }
+ul.check { list-style: none; padding: 0; } ul.check li::before { content: "☐ "; color: var(--tea-rose); font-weight: 800; }
+
+/* ---------- Línea de tiempo ---------- */
+.tiempo { display: grid; grid-template-columns: repeat(5, 1fr); gap: 2mm; margin: 3mm 0 6mm; }
+.tiempo div { border-radius: 2.5mm; padding: 3mm; font-size: 8.5pt; break-inside: avoid; }
+.tiempo b { display: block; font: 800 10pt var(--f-titulo); color: var(--chocolate); }
+.tiempo .t1 { background: var(--tea-rose); color: #fff; } .tiempo .t1 b { color: #fff; }
+.tiempo .t2 { background: var(--strawberry); } .tiempo .t3 { background: var(--semolina); } .tiempo .t4 { background: var(--matcha); } .tiempo .t5 { background: var(--peanut); color: #fff; } .tiempo .t5 b { color: #fff; }
+
+/* ---------- Pie de cada documento ---------- */
+.pie { margin-top: 10mm; padding-top: 3mm; border-top: .3mm solid var(--line); font-size: 8pt; color: var(--peanut); display: flex; justify-content: space-between; }
+.pequeno { font-size: 8.5pt; color: var(--peanut); }
+.dos-col { display: grid; grid-template-columns: 1fr 1fr; gap: 6mm; }

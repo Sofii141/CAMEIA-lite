@@ -78,7 +78,7 @@ P4 es lo que conecta todo: la literatura dice que con IA **se siente** más ráp
 - [ ] Confirmar que el tema 3 quedó registrado en el archivo compartido (cerró el 24/10) y guardar captura en `09`.
 - [ ] Ojo con la semana: **Entrega 2 el 27/10 y Parcial 2 el 28/10** del curso, y el punto de control es el **30/10**. Repártanse bien.
 
-### 🔴 Próxima entrega: Punto de control — jueves 30 de octubre (sin nota, pero con consecuencia)
+### 🔴 Próxima entrega: Punto de control — viernes 30 de octubre (sin nota, pero con consecuencia)
 - [ ] **Caso base**: ≥10 fichas (mejor 12) con difíciles marcadas, congeladas. → `02 - Caso base/Casos propios`
 - [ ] **Línea base medida**: ≥10 tareas en pareja humana con la hoja *Medicion por caso* llena + condiciones (quién, cuánto duró, herramientas). → `03 - Linea base`
 - [ ] **GQM** escrito. → `03 - Linea base`
