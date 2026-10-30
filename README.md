@@ -33,6 +33,9 @@ Estas solo se asignan a la condición *con agente* y las hace la **otra persona*
 python sorteo.py 30102026
 ```
 El número es la semilla. Anoten en un acta cuál usaron, así cualquiera puede repetir el sorteo y obtener lo mismo.
+Guarden la salida en `registro/sorteo_<semilla>.txt` (`python sorteo.py 30102026 > registro/sorteo_30102026.txt`).
+
+El sorteo usa **cupos fijos por tamaño**: la línea base recibe 1 L, 4 M y 5 S, y la condición con agente (ciclos 1 y 2) 1 L, 6 M y 5 S, contando las 5 tareas forzadas. Así las dos condiciones tienen casi la misma mezcla. El número de tareas difíciles por condición varía con la semilla: lo imprime el sorteo y se reporta.
 
 ## Demo (frontend + backend), para la presentación
 ```bash
