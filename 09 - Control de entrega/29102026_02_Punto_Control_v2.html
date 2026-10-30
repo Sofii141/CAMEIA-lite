@@ -27,20 +27,20 @@
   <p class="lead">El punto de control revisa tres cosas: el caso base, la especificación del agente (v1) y la línea base ya medida. Además, ese día se intercambian tres casos con otra pareja.</p>
   <div class="tarjetas">
     <div class="tarjeta verde"><div class="t">Caso base</div><div class="v">24 casos</div>11 S · 11 M · 2 L · <strong>10 difíciles</strong></div>
-    <div class="tarjeta miel"><div class="t">Especificación v1</div><div class="v">1 agente</div>8 campos · herramienta y modelo se fijan antes del ciclo 1</div>
-    <div class="tarjeta rosa"><div class="t">Línea base</div><div class="v">10 tareas</div>pareja humana, sin IA · medida el 29/10 (§5)</div>
+    <div class="tarjeta miel"><div class="t">Especificación v1</div><div class="v">1 agente</div>8 campos · GitHub Copilot con un modelo que no es Claude</div>
+    <div class="tarjeta rosa"><div class="t">Línea base</div><div class="v">10 tareas</div>sorteadas y en medición: pareja humana, sin IA (§5)</div>
   </div>
   <table>
     <thead><tr><th>Requisito del enunciado</th><th>Dónde está</th><th>Estado</th></tr></thead>
     <tbody>
       <tr><td>Caso base con ≥ 10 casos que incluye material difícil</td><td>§2 · repo <code>main</code> (<code>TAREAS.md</code>)</td><td><span class="chip ok">Listo</span></td></tr>
-      <tr><td>Caso congelado antes de tocar el agente</td><td>commit <code>congelado v1</code> en <code>main</code></td><td><span class="chip pend">Antes de medir</span></td></tr>
-      <tr><td>Línea base medida con GQM, ≥ 10 casos y condiciones registradas</td><td>§3, §5 y bitácora v2 (anexo)</td><td><span class="chip pend">29/10</span></td></tr>
-      <tr><td>Especificación de agentes v1 con sus 8 campos</td><td>§7 · <code>04 - Especificacion agentes/29102026_01_Spec_Copiloto_v1.md</code></td><td><span class="chip ok">Lista</span> <span class="chip info">falta la herramienta</span></td></tr>
-      <tr><td>Tres casos para entregar a otra pareja y tres que recibimos</td><td><code>02 - Caso base/Casos entregados</code> y <code>Casos recibidos</code></td><td><span class="chip pend">30/10</span></td></tr>
+      <tr><td>Caso congelado antes de tocar el agente</td><td>commit <code>congelado v1</code> y tag <code>congelado-v1</code> en <code>main</code> (29/10)</td><td><span class="chip ok">Listo</span></td></tr>
+      <tr><td>Línea base medida con GQM, ≥ 10 casos y condiciones registradas</td><td>§3, §4 (sorteo), §5 y bitácora v2 (§11)</td><td><span class="chip pend">En curso</span> se completa antes del 2/11</td></tr>
+      <tr><td>Especificación de agentes v1 con sus 8 campos</td><td>§7 · <code>04 - Especificacion agentes/29102026_01_Spec_Copiloto_v1.md</code></td><td><span class="chip ok">Lista</span></td></tr>
+      <tr><td>Tres casos para entregar a otra pareja y tres que recibimos</td><td><code>02 - Caso base/Casos entregados</code> y <code>Casos recibidos</code></td><td><span class="chip pend">30/10</span> según la pareja asignada</td></tr>
     </tbody>
   </table>
-  <div class="caja alerta"><h4>Regla que seguimos</h4><p>La línea base (§5) se llena <strong>solo</strong> con lo medido en las sesiones cronometradas y grabadas: el script <code>07 - Analisis/Scripts/resumen_medicion.py</code> la copia aquí desde la bitácora. Si no alcanzamos las 10 tareas, se reporta el n real con la marca <code>[N]</code>.</p></div>
+  <div class="caja alerta"><h4>Dónde estamos con la línea base</h4><p>El caso quedó congelado y sorteado el 29/10. La línea base se mide <strong>en vivo y grabada</strong>, en el orden que fijó el sorteo. En §5 va <strong>solo</strong> lo que ya está medido (el script <code>resumen_medicion.py</code> lo copia desde la bitácora). Las tareas que falten se miden el 31/10 y el 1/11, <strong>antes de usar el agente</strong> (el ciclo 1 empieza el 2/11). No reconstruimos nada de memoria.</p></div>
 </section>
 
 <section class="nueva">
@@ -90,7 +90,7 @@
       <li>Las reglas se sacan de su entorno, así que no medimos el costo de integrarlas con el sistema real.</li>
       <li>Los PR originales se escribieron con ayuda de Claude Code, así que la solución de referencia puede tener "estilo de agente".</li>
       <li>Las tareas y sus pruebas se generaron con Claude Code, a cargo de Ana Sofía: ella conoce el diseño del caso. Lo declaramos como amenaza interna.</li>
-      <li>Cinco tareas ya las implementó uno de nosotros en CAMEIA: van solo en la condición con agente y las hace la otra persona.</li>
+      <li>Cinco tareas ya las implementó uno de nosotros en CAMEIA: van solo en la condición con agente y las hace la otra persona. En t08 (línea base), la regla la programó otra integrante (cameia-perfil#90), pero Juan José hizo el mensaje del front (cameia-web#64), así que conoce el contexto. Lo verificamos en GitHub y lo declaramos.</li>
       <li>Cinco reglas se ajustaron para hacer el caso más difícil; van marcadas <code>[P]</code> en el backlog de origen.</li>
     </ul>
   </div>
@@ -140,6 +140,17 @@
     <li>Codewalk: máximo 5 minutos por persona.</li>
     <li>Llenar la hoja de medición en ese momento, no al final del día.</li>
   </ol>
+  <h3>Resultado del sorteo · semilla 30102026</h3>
+  <p class="pequeno">Es la semilla anunciada en el README desde el 26/10, antes de conocer el resultado. Cualquiera puede repetirlo con <code>python sorteo.py 30102026</code>. Salida completa: <code>registro/sorteo_30102026.txt</code>.</p>
+  <table>
+    <thead><tr><th>Etapa</th><th>Mezcla</th><th>Tareas en el orden en que se hacen (⚠️ = difícil)</th><th>Quién conduce</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Línea base</strong></td><td>5 S · 4 M · 1 L · 5 ⚠️</td><td>t02 → t21⚠️ → t18⚠️ → t08⚠️ → t22⚠️ → t09 → t05 → t20⚠️ → t01 → t16</td><td>Pareja humana (cambian cada 15 min)</td></tr>
+      <tr><td><strong>Ciclo 1</strong></td><td>2 S · 3 M · 1 L · 4 ⚠️</td><td>t14 → t07⚠️ → t15 → t12⚠️ → t03⚠️ → t19⚠️</td><td>Ana Sofía: t03, t07, t12 · Juan José: t14, t15, t19</td></tr>
+      <tr><td><strong>Ciclo 2</strong></td><td>3 S · 3 M · 0 L · 1 ⚠️</td><td>t17 → t13⚠️ → t24 → t11 → t23 → t10 (+ los 3 casos recibidos)</td><td>Ana Sofía: t10, t11, t23 · Juan José: t13, t17, t24</td></tr>
+      <tr><td>Repuesto</td><td>1 S · 1 M</td><td>t04, t06</td><td>—</td></tr>
+    </tbody>
+  </table>
   <div class="caja ok"><h4>Controles para que la comparación valga</h4>
     <ul>
       <li><strong>Sorteo reproducible y estratificado</strong> (<code>python sorteo.py &lt;semilla&gt;</code>), con cupos fijos por tamaño. Las difíciles se reparten alternando entre condiciones y <strong>el orden de las tareas también se sortea</strong>. La semilla y la salida quedan en <code>registro/</code>.</li>
@@ -152,7 +163,16 @@
 
 <section class="nueva">
   <h2><span class="num">5</span>Línea base</h2>
-  <!-- LB:INICIO --><div class="caja alerta"><h4>Pendiente de medir</h4><p>Esta sección la llena <code>07 - Analisis/Scripts/resumen_medicion.py</code> a partir de la bitácora v2, después de las sesiones del 29/10. No se escribe a mano.</p></div><!-- LB:FIN -->
+  <table>
+    <thead><tr><th>Sesión</th><th>Cuándo</th><th>Tareas (orden del sorteo)</th></tr></thead>
+    <tbody>
+      <tr><td>S01</td><td>Viernes 30/10, antes de clase</td><td>t02 · t21 (≈ 1,5 h)</td></tr>
+      <tr><td>S02</td><td>Sábado 31/10</td><td>t18 · t08 · t22 · t09 (≈ 3,5 h)</td></tr>
+      <tr><td>S03</td><td>Domingo 1/11</td><td>t05 · t20 · t01 · t16 (≈ 2,5 h)</td></tr>
+    </tbody>
+  </table>
+  <p class="pequeno">Cada sesión queda en la hoja <em>Sesiones</em> de la bitácora (quién, cuándo, cuánto duró, herramientas, interrupciones y grabación). Lo de abajo es lo medido hasta la fecha de este documento.</p>
+  <!-- LB:INICIO --><div class="caja alerta"><h4>Pendiente de medir</h4><p>Esta sección la llena <code>07 - Analisis/Scripts/resumen_medicion.py</code> a partir de la bitácora v2, después de cada sesión. No se escribe a mano.</p></div><!-- LB:FIN -->
 </section>
 
 <section class="nueva">
@@ -179,7 +199,7 @@
       <tr><td><strong>Rol y alcance</strong></td><td>Hace de navegante en el desarrollo de <em>una</em> tarea de CAMEIA-lite: propone un enfoque, el código y los casos borde que conviene probar. La persona conduce y decide.</td></tr>
       <tr><td><strong>Entradas</strong></td><td>Solo el enunciado y los criterios de aceptación de la tarea (<code>TAREAS.md</code>), su archivo <code>src/cameia_lite/tNN.py</code> y sus pruebas visibles.</td></tr>
       <tr><td><strong>Salidas</strong></td><td>En markdown fijo: un plan de 3 a 6 pasos, el diff (solo en <code>tNN.py</code>), los supuestos que hizo y los casos borde que cree que faltan, como texto.</td></tr>
-      <tr><td><strong>Herramientas y permisos</strong></td><td>Herramienta y modelo exactos: <span class="chip pend">se fijan antes del 2/11</span>. Trabaja en una copia del repo <strong>sin</strong> <code>tests/ocultas</code>. Sin acceso al remoto ni a credenciales.</td></tr>
+      <tr><td><strong>Herramientas y permisos</strong></td><td><strong>GitHub Copilot en VS Code</strong>, con un modelo que <strong>no</strong> sea de la familia Claude (que ayudó a construir el caso). El modelo y la versión exactos se anotan en el primer uso y no cambian durante los ciclos. Trabaja en una copia del repo <strong>sin</strong> <code>tests/ocultas</code>. Sin acceso al remoto ni a credenciales.</td></tr>
       <tr><td><strong>Prohibiciones</strong></td><td>No hacer commit, push ni merge. No modificar <code>tests/</code> ni otros archivos. No leer las pruebas ocultas. No desactivar ni saltarse pruebas. No inventar requisitos. No manejar credenciales ni datos personales.</td></tr>
       <tr><td><strong>Criterio de validación</strong></td><td>Se acepta solo si pasan las pruebas visibles, cumple cada criterio de aceptación y quien conduce puede explicar cada línea sin mirar al agente.</td></tr>
       <tr><td><strong>Punto de control humano</strong></td><td>Antes de cada commit, quien conduce decide aceptar, corregir o rechazar y lo registra en la bitácora con su razón. Las pruebas ocultas las corre la persona. Después viene el codewalk con el compañero.</td></tr>
@@ -192,17 +212,18 @@
 <section>
   <h2><span class="num">8</span>Calendario y preguntas</h2>
   <div class="tiempo">
-    <div class="t1"><b>29 oct</b>Línea base: 10 tareas en pareja humana</div>
+    <div class="t1"><b>29 oct – 1 nov</b>Caso congelado; línea base en 3 sesiones</div>
     <div class="t2"><b>30 oct</b>Punto de control e intercambio de 3 casos</div>
     <div class="t3"><b>2–6 nov</b>Ciclo 1 con el agente, bitácora y spec v2</div>
     <div class="t4"><b>9–13 nov</b>Ciclo 2, 3 fallos documentados y video</div>
     <div class="t5"><b>16–18 nov</b>Reporte, diapositivas y exposición</div>
   </div>
   <h3>Preguntas para el profesor</h3>
+  <p class="pequeno">Solo las que pueden cambiar el diseño o el calendario. Su respuesta la guardamos por escrito en <code>09 - Control de entrega</code>.</p>
   <ul class="check">
-    <li>¿Acepta CAMEIA-lite (requisitos reales de CAMEIA aislados como funciones) como caso base, en lugar de trabajar directamente sobre los repositorios?</li>
-    <li>¿Es válido agregar la comprensión del código (codewalk) a las métricas sugeridas para el tema 3?</li>
-    <li>¿Con qué pareja intercambiamos los tres casos, y en qué formato? Proponemos una ficha con enunciado, criterios de aceptación y pruebas.</li>
+    <li><strong>Caso base y comparación.</strong> ¿Acepta CAMEIA-lite (reglas reales de CAMEIA aisladas como funciones) como caso base? ¿Y la pareja humana sin IA como línea base, que es lo que compara el tema 3, aunque en CAMEIA ya trabajábamos con IA?</li>
+    <li><strong>Fecha de la línea base.</strong> Llevamos medida solo una parte. ¿Acepta que terminemos las 10 tareas el 31/10 y el 1/11, en vivo, grabadas y antes de usar el agente (el ciclo 1 empieza el 2/11)?</li>
+    <li><strong>Intercambio.</strong> ¿Con qué pareja intercambiamos los 3 casos, y en qué formato? Proponemos una ficha con enunciado, criterios de aceptación y pruebas.</li>
   </ul>
 </section>
 
@@ -243,6 +264,24 @@
     </tbody>
   </table>
   <p class="pequeno">Ningún dato de línea base ni de bitácora fue generado por IA: esos datos salen solo de nuestras sesiones cronometradas y grabadas.</p>
+</section>
+
+<section>
+  <h2><span class="num">11</span>Anexos y enlaces</h2>
+  <p>No adjuntamos archivos aparte: todo está en el repositorio público <a href="https://github.com/Sofii141/CAMEIA-lite">github.com/Sofii141/CAMEIA-lite</a>, con su historial de versiones.</p>
+  <table>
+    <thead><tr><th>Anexo</th><th>Enlace</th></tr></thead>
+    <tbody>
+      <tr><td>Código del caso base, congelado (24 tareas, pruebas, sorteo)</td><td><a href="https://github.com/Sofii141/CAMEIA-lite/tree/congelado-v1">tag congelado-v1</a> · <a href="https://github.com/Sofii141/CAMEIA-lite/blob/main/TAREAS.md">TAREAS.md</a></td></tr>
+      <tr><td>Resultado del sorteo y registro de sesiones</td><td><a href="https://github.com/Sofii141/CAMEIA-lite/blob/main/registro/sorteo_30102026.txt">registro/sorteo_30102026.txt</a></td></tr>
+      <tr><td>Bitácora y medición (hoja de cálculo)</td><td><a href="https://github.com/Sofii141/CAMEIA-lite/blob/documentacion/05%20-%20Ciclos%20y%20bitacora/29102026_01_Bitacora_v2.xlsx">29102026_01_Bitacora_v2.xlsx</a></td></tr>
+      <tr><td>Backlog de origen: tarea → Jira → PR</td><td><a href="https://github.com/Sofii141/CAMEIA-lite/blob/documentacion/02%20-%20Caso%20base/29102026_01_Backlog_Origen_CAMEIA-lite_v2.xlsx">29102026_01_Backlog_Origen_CAMEIA-lite_v2.xlsx</a></td></tr>
+      <tr><td>Especificación del agente v1 (con historial)</td><td><a href="https://github.com/Sofii141/CAMEIA-lite/blob/documentacion/04%20-%20Especificacion%20agentes/29102026_01_Spec_Copiloto_v1.md">29102026_01_Spec_Copiloto_v1.md</a></td></tr>
+      <tr><td>GQM v2</td><td><a href="https://github.com/Sofii141/CAMEIA-lite/blob/documentacion/03%20-%20Linea%20base/29102026_01_GQM_v2.md">29102026_01_GQM_v2.md</a></td></tr>
+      <tr><td>Fuentes (revisadas por pares, con DOI)</td><td><a href="https://github.com/Sofii141/CAMEIA-lite/blob/documentacion/01%20-%20Exposicion/Fuentes/29102026_01_Fuentes_v2.md">29102026_01_Fuentes_v2.md</a></td></tr>
+      <tr><td>Toda la documentación y el registro de cambios</td><td><a href="https://github.com/Sofii141/CAMEIA-lite/tree/documentacion">rama documentacion</a> · <a href="https://github.com/Sofii141/CAMEIA-lite/blob/documentacion/CHANGELOG.md">CHANGELOG.md</a></td></tr>
+    </tbody>
+  </table>
 </section>
 
 <div class="pie"><span>Ana Sofía Arango Yanza · Juan José Arias Chacua</span><span>Ágiles 2026-2 · Unicauca · Punto de control v2</span></div>

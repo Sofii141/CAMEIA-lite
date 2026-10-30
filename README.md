@@ -2,7 +2,7 @@
 
 Ana Sofía Arango Yanza · Juan José Arias Chacua · Prof. César Pardo
 
-**Empiecen por [GUIA_EntregaFinal.md](GUIA_EntregaFinal.md)**. Para el punto de control del 30/10, lean primero la revisión del 29/10: [09 - Control de entrega/29102026_01_Revision_Entrega_v1.pdf](09%20-%20Control%20de%20entrega/29102026_01_Revision_Entrega_v1.pdf). Ahí están el semáforo, lo que se corrigió y los pasos pendientes en orden.
+**Empiecen por [GUIA_EntregaFinal.md](GUIA_EntregaFinal.md)**. Para el punto de control del 30/10, lean primero la revisión del 29/10: [09 - Control de entrega/29102026_01_Revision_Entrega_v1.pdf](09%20-%20Control%20de%20entrega/29102026_01_Revision_Entrega_v1.pdf). Ahí están el semáforo, lo que se corrigió y los pasos pendientes en orden. **Lo que se envía el 30/10:** [29102026_02_Punto_Control_v2.pdf](09%20-%20Control%20de%20entrega/29102026_02_Punto_Control_v2.pdf). **Cómo medir la línea base, paso a paso:** [29102026_03_Guia_Entrega_y_Medicion_v1.pdf](09%20-%20Control%20de%20entrega/29102026_03_Guia_Entrega_y_Medicion_v1.pdf).
 
 ## Carpetas
 | Carpeta | Qué va |

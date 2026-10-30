@@ -65,7 +65,7 @@ def leer_sesiones(xlsx, etapa="Línea base"):
     cab = [c.value for c in hoja[1]]
     filas = []
     for r in hoja.iter_rows(min_row=2, values_only=True):
-        if r[2] == etapa:
+        if r[2] == etapa and r[1]:  # solo sesiones que ya ocurrieron (con fecha)
             filas.append({k: ("" if v is None else v.strftime("%H:%M") if isinstance(v, (dt.time, dt.datetime)) else str(v))
                           for k, v in zip(cab, r)})
     return filas
