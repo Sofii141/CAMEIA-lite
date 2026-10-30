@@ -52,8 +52,17 @@ for tam in ("L", "M", "S"):
     grupo = agente[tam]
     rng.shuffle(grupo)
     for t in grupo:
-        asignacion[t] = ("Ciclo 1" if i % 2 == 0 else "Ciclo 2", OTRA[AUTOR[t]] if t in AUTOR else "por definir")
+        asignacion[t] = ("Ciclo 1" if i % 2 == 0 else "Ciclo 2", OTRA[AUTOR[t]] if t in AUTOR else None)
         i += 1
+
+# Quién conduce las tareas con agente que no están forzadas: a quien lleve menos, para quedar 6 y 6.
+carga = {p: sum(1 for c, q in asignacion.values() if q == p) for p in OTRA}
+libres_agente = sorted(t for t in asignacion if asignacion[t][1] is None)
+rng.shuffle(libres_agente)
+for t in libres_agente:
+    persona = min(sorted(carga), key=lambda p: (carga[p], rng.random()))
+    asignacion[t] = (asignacion[t][0], persona)
+    carga[persona] += 1
 
 print(f"Semilla: {semilla}\n")
 for c in ("Línea base", "Ciclo 1", "Ciclo 2", "Repuesto"):
