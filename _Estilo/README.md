@@ -29,5 +29,11 @@ Todos los documentos (PDF) y las diapositivas del proyecto usan esta paleta y es
    Usa Microsoft Edge en modo invisible: no hay que instalar nada. Las fuentes están en `_Estilo/fuentes` (licencia OFL), así que funciona sin internet.
 3. Los componentes disponibles están en `estilo.css`: portada, `h2 .num`, tablas, `.chip` (ok/pend/dif/info/s/m/l), `.caja` (nota/ok/alerta), `.tarjetas`, `ol.pasos`, `.tiempo` y `.pie`.
 
+## Hojas de cálculo (Excel)
+Encabezado en Milk Chocolate con texto Crema, filas alternas en Semolina suave, difíciles en Strawberry, pestañas de colores y fuente Segoe UI (las fuentes del proyecto no vienen instaladas en Windows). Para aplicarlo a un xlsx nuevo (primero cópienlo con fecha y versión nuevas):
+```bash
+python _Estilo/estilo_xlsx.py "ruta/archivo.xlsx"
+```
+
 ## Diapositivas
 Usar la misma paleta: fondo Crema o Chocolate, títulos en Fraunces y acento Tea Rose. La primera y la última diapositiva van en Chocolate, como la portada del PDF.

@@ -118,8 +118,10 @@ P4 es lo que conecta todo: la literatura dice que con IA **se siente** más ráp
 - Afirmar causalidad con n = 10.
 - Darle al agente lo que no le darían a un tercero (secretos, datos personales).
 
-## 6. Archivos ya creados
-- `05 - Ciclos y bitacora/25102026_01_Bitacora_v1.xlsx` — bitácora + medición por caso.
-- `04 - Especificacion agentes/25102026_01_Spec_Copiloto_v1.md` — spec con los 8 campos del PDF.
+## 6. Archivos ya creados (versiones vigentes al 29/10)
+- `05 - Ciclos y bitacora/29102026_01_Bitacora_v2.xlsx` — sesiones, medición por caso, codewalk, bitácora y resumen.
+- `04 - Especificacion agentes/29102026_01_Spec_Copiloto_v1.md` — spec v1 con los 8 campos del PDF.
+- `03 - Linea base/29102026_01_GQM_v2.md` — GQM.
+- `01 - Exposicion/Fuentes/29102026_01_Fuentes_v2.md` y `29102026_02_Como_Medir_y_Presentar_v2.md` — fuentes revisadas por pares y cómo presentar resultados.
+- `09 - Control de entrega/29102026_02_Punto_Control_v2.pdf` — lo que se lleva el 30/10.
 - `02 - Caso base/Plantilla_Ficha_Caso.md` — ficha de cada caso.
-- `01 - Exposicion/Fuentes/25102026_01_Fuentes_v1.md` — artículos (todos en `[P]` hasta que los lean).

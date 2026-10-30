@@ -2,7 +2,7 @@
 
 Ana Sofía Arango Yanza · Juan José Arias Chacua · Prof. César Pardo
 
-**Empiecen por [GUIA_EntregaFinal.md](GUIA_EntregaFinal.md)** y, para esta semana, por [26102026_01_Plan_PuntoControl_v1.md](26102026_01_Plan_PuntoControl_v1.md).
+**Empiecen por [GUIA_EntregaFinal.md](GUIA_EntregaFinal.md)**. Para el punto de control del 30/10, lean primero la revisión del 29/10: [09 - Control de entrega/29102026_01_Revision_Entrega_v1.pdf](09%20-%20Control%20de%20entrega/29102026_01_Revision_Entrega_v1.pdf). Ahí están el semáforo, lo que se corrigió y los pasos pendientes en orden.
 
 ## Carpetas
 | Carpeta | Qué va |
@@ -15,11 +15,11 @@ Ana Sofía Arango Yanza · Juan José Arias Chacua · Prof. César Pardo
 | `04 - Especificacion agentes` | Spec v1, v2… y prompts finales |
 | `05 - Ciclos y bitacora` | Bitácora xlsx + notas de ciclo 1 y 2 |
 | `06 - Fallos y riesgos` | 3 fallos documentados + análisis de riesgos |
-| `07 - Analisis` | Antes/después, scripts y gráficos |
+| `07 - Analisis` | Antes/después, scripts y gráficos. `Scripts/resumen_medicion.py` resume la bitácora y llena la línea base del punto de control |
 | `08 - Reporte` | Reporte PDF (6–10 pág.) y sus versiones |
 | `09 - Control de entrega` | Checklist, actas de la pareja, confirmaciones del profe por escrito |
 | `99 - Videos` | Video de respaldo de la demo (2 min) |
-| `_Estilo` | Paleta "Macarons", fuentes, `estilo.css`, plantilla HTML y `html_a_pdf.py`: **todo documento y las diapositivas siguen este estilo** |
+| `_Estilo` | Paleta "Macarons", fuentes, `estilo.css`, plantilla HTML, `html_a_pdf.py` y `estilo_xlsx.py` (para Excel): **todo documento y las diapositivas siguen este estilo** |
 
 ## Ramas del repositorio (https://github.com/Sofii141/CAMEIA-lite)
 - `main`: código del caso base (carpeta local `Repositorio/CAMEIA-lite`).
